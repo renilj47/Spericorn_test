@@ -1,0 +1,62 @@
+<!-- Sign up form -->
+<section class="signup">
+  <div class="container">
+    <div class="signup-content">
+      <div class="signup-form">
+        <h2 class="form-title">Sign up</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="register-form" id="register-form">
+          <div class="form-group">
+            <label for="email"><i class="zmdi zmdi-email"></i></label>
+            <input formControlName="email" type="email" name="email" id="email" placeholder="Your Email" />
+            <div *ngIf="submitted && cRegister.email.errors " class="valid-error-msg">
+              <div *ngIf="cRegister.email.errors.required"> Email required </div>
+              <div *ngIf="cRegister.email.errors.pattern"> Invalid Email id </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username"><i class="zmdi zmdi-email"></i></label>
+            <input formControlName="username" type="username" name="username" id="username"
+              placeholder="Your Username" />
+            <div *ngIf="submitted && cRegister.username.errors " class="valid-error-msg">
+              <div *ngIf="cRegister.username.errors.required"> Username required </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone"><i class="zmdi zmdi-lock"></i></label>
+            <input onkeypress="return  (event.keyCode != 32 && event.which != 32)" formControlName="phone"
+              type="phone" name="phone" id="phone" placeholder="Phone Number" />
+            <div *ngIf="submitted && cRegister.phone.errors " class="valid-error-msg">
+              <div *ngIf="cRegister.phone.errors.required"> Phone number is required </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password"><i class="zmdi zmdi-lock"></i></label>
+            <input tooltip="Must contain minimum 8 characters includes at least one uppercase and special character"
+              formControlName="password" type="password" name="password" id="password" placeholder="Password" />
+            <div *ngIf="submitted && cRegister.password.errors " class="valid-error-msg">
+              <div *ngIf="cRegister.password.errors.required"> Password required </div>
+              <div *ngIf="cRegister.password.errors.pattern"> Invalid password format </div>
+              <div *ngIf="cRegister.password.errors.minLength"> Password must be minimum of 8 character </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password"><i class="zmdi zmdi-lock"></i></label>
+            <input formControlName="cPassword" type="password" name="cpassword" id="cpassword"
+              placeholder="Confirm Password" />
+            <div *ngIf="submitted && cRegister.cPassword.errors " class="valid-error-msg">
+              <div *ngIf="cRegister.cPassword.errors.required"> Password required </div>
+              <div *ngIf="cRegister.cPassword.errors.ConfirmPassword"> Password Mismatch</div>
+            </div>
+          </div>
+          <div class="form-group form-button">
+            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+          </div>
+        </form>
+      </div>
+      <div class="signup-image">
+        <figure><img src="assets/images/signup-image.jpg" alt="sing up image"></figure>
+        <a routerLink="/auth/login" class="signup-image-link">I am already member</a>
+      </div>
+    </div>
+  </div>
+</section>

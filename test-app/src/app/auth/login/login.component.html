@@ -1,0 +1,38 @@
+<!-- Sing in  Form -->
+<section class="sign-in">
+  <div class="container">
+      <div class="signin-content">
+          <div class="signin-image">
+              <figure><img src="assets/images/signin-image.jpg" alt="sing up image"></figure>
+              <a routerLink="/auth/register" class="signup-image-link">Create an account</a>
+          </div>
+
+          <div class="signin-form">
+              <h2 class="form-title">Sign in</h2>
+              <form [formGroup]="userForm" (ngSubmit)="userSubmit()" class="register-form" id="login-form">
+                  <div class="form-group">
+                      <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                      <input onkeypress="return  (event.keyCode != 32 && event.which != 32)"
+                      formControlName="email" type="text" name="mail" id="mail" placeholder="Your Email"/>
+                      <div *ngIf="submitted && clogin.email.errors " class="valid-error-msg">
+                        <div *ngIf="clogin.email.errors.required"> Email required </div>
+                        <div *ngIf="clogin.email.errors.pattern"> Invalid Email id </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                      <input formControlName="password" type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                      <div *ngIf="submitted && clogin.password.errors " class="valid-error-msg">
+                        <div *ngIf="clogin.password.errors.required"> Password required </div>
+                      </div>
+                  </div>
+                  <div class="form-group form-button">
+                      <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+
+
